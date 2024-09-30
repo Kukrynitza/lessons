@@ -5,11 +5,14 @@ body {
   background-color: #18191c;
 }
 
+header {
+  margin-left: 190px;
+}
+
 a {
   display: inline;
   padding: 0;
   padding-bottom: 0;
-  padding-left: 3px;
   margin-bottom: 0;
   font-size: 16px;
   border: 0;
@@ -54,6 +57,15 @@ article {
   border-radius: 5px;
 }
 
+.courses {
+  margin-left: 190px;
+}
+
+.main-ul {
+  display: flex;
+  justify-content: center;
+}
+
 h1 {
   margin-bottom: 7px;
   font-size: 24px;
@@ -69,8 +81,4 @@ footer p {
 
 .author-and-date {
   text-align: right;
-}
-
-.right {
-  border-left: 178px;
 }
