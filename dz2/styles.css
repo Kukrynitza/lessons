@@ -29,7 +29,14 @@ main {
 }
 
 main ul li {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   width: calc(100% / 3);
+  height: 420px;
+  padding: 10px;
+  background-color: #252525;
+  border-radius: 5px;
 }
 
 .courses-list {
@@ -42,10 +49,6 @@ article {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
-  height: 420px;
-  padding: 10px;
-  background-color: #252525;
-  border-radius: 5px;
 }
 
 h1 {
