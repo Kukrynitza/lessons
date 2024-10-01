@@ -41,8 +41,8 @@ main ul li {
 article {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 500px;
+  row-gap: 15px;
+  height: 420px;
   padding: 10px;
   background-color: #252525;
   border-radius: 5px;
