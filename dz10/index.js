@@ -1,4 +1,4 @@
-function availability_in_stock(quantity){
+function AvailabilityInStock(quantity){
   if (quantity > 10) {
     console.log(`Товара достаточно`)
   }
@@ -10,13 +10,13 @@ function availability_in_stock(quantity){
   }
 }
 
-function console_log(name, price){
-  let string =`${name} стоит(-ят) ${price} рублей`
+function ConsoleLog(name, price){
+  const string =`${name} стоит(-ят) ${price} рублей`
   console.log(string)
 }
 
 
-product = {
+const product = {
   name: 'Honda',
   price: 52000,
   quantity: 1
@@ -30,26 +30,3 @@ for (let index = 1; index <= 10; index++) {
   count +=index;
 }
 console.log(count)
-
-
-// function sum(one, two){
-//   const result = one + two
-//   return result
-// }
-// function divide(one, two){
-//   const result = one / two
-//   return result
-// }
-// function subtract(one, two){
-//   const result = one - two
-//   return result
-// }
-
-
-// let result = sum(2,6)
-// console.log(result)
-// result = divide(result,2)
-// console.log(result)
-// result = subtract(result,3)
-// console.log(result)
-
