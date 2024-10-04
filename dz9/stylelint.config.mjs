@@ -3,3 +3,4 @@ export default {
     '@shcherbin/stylelint-config'
   ]
 }
+// npm install stylelint @shcherbin/stylelint-config -Daaaaa
