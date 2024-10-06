@@ -1,17 +1,21 @@
 function rever(str) {
   return str.split('').reverse().join('')
 }
+
 function find(str, substring) {
   if (str.indexOf(substring) !== -1) {
     return true
   }
+
   return false
 }
+
 function reverForMass(mass) {
   for (let i = mass.length - 1; i != -1; i--) {
     console.log(mass[i])
   }
 }
+
 function main() {
   let str = 'Hello World'
   console.log(`Длина ${str.length}`)
@@ -26,7 +30,7 @@ function main() {
   while (mass.length > 2) {
     mass.pop()
   }
-  for (el of mass) {
+  for (const el of mass) {
     console.log(el)
   }
   reverForMass(mass)
