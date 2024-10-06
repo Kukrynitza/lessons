@@ -1,13 +1,13 @@
-function Rever(str) {
+function rever(str) {
   return str.split('').reverse().join('')
 }
-function Find(str, substring) {
+function find(str, substring) {
   if (str.indexOf(substring) !== -1) {
     return true
   }
   return false
 }
-function ReverForMass(mass) {
+function reverForMass(mass) {
   for (let i = mass.length - 1; i != -1; i--) {
     console.log(mass[i])
   }
@@ -15,9 +15,9 @@ function ReverForMass(mass) {
 function main() {
   let str = 'Hello World'
   console.log(`Длина ${str.length}`)
-  str = Rever(str)
+  str = rever(str)
   console.log(`Реверс ${str}`)
-  console.log(`Содержит подстроку ${Find(str, 'He')}`)
+  console.log(`Содержит подстроку ${find(str, 'He')}`)
   const mass = ['string', 5]
   console.log(`Количество элементов ${mass.length}`)
   mass.push(true)
@@ -29,6 +29,6 @@ function main() {
   for (el of mass) {
     console.log(el)
   }
-  ReverForMass(mass)
+  reverForMass(mass)
 }
 main()
