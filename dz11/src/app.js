@@ -18,7 +18,7 @@ function ReverForMass(mass){
 
 function main(){
   let str = "Hello World"
-  console.log('Длина ' + str.length)
+  console.log('Длина ' + str.length);
   str = Rever(str)
   console.log('Реверс ' + str)
   console.log('Содержит подстроку '+ Find(str, 'He'))
