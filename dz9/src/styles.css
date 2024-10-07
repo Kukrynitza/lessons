@@ -4,7 +4,7 @@ body {
   font-family: Inter, sans-serif;
   font-size: 16px;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   font-optical-sizing: auto;
   line-height: 1.5;
   color: #eeeeec;
@@ -15,9 +15,10 @@ main {
   display: grid;
   grid-template-columns: 2fr 3fr;
   gap: 64px;
+  align-items: center;
   justify-content: center;
   width: 67.5%;
-  margin-top: 80px;
+  height: 100vh;
 }
 
 .img {
@@ -45,9 +46,13 @@ dialog {
 .scroll-photo {
   display: flex;
   flex-wrap: nowrap;
-  gap: 8px;
-  overflow-x: auto;
+  gap: 24px;
+  overflow-x: scroll;
   overscroll-behavior-x: contain;
+}
+
+.scroll-photo li img {
+  max-width: max-content; /* не понимаю принцип работы max-width */
 }
 
 .info {
@@ -57,7 +62,6 @@ dialog {
 
 .info div {
   display: grid;
-  grid-template-rows: auto;
   gap: 24px;
 }
 
@@ -66,13 +70,9 @@ h1 {
   font-weight: 700;
 }
 
-details {
-  height: min-content;
-}
-
 .button {
   justify-self: flex-start;
-  padding: 8px 34px;
+  padding: 8px 24px;
   font-weight: 500;
   color: #191918;
   background-color: #d4b3a5;
