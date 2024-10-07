@@ -1,4 +1,4 @@
-function AvailabilityInStock(quantity){
+function availabilityInStock(quantity){
   if (quantity > 10) {
     console.log(`Товара достаточно`)
   }
@@ -15,16 +15,14 @@ function ConsoleLog(name, price){
   console.log(string)
 }
 
-
 const product = {
   name: 'Honda',
   price: 52000,
   quantity: 1
 }
-
 console.log(product)
-availability_in_stock(product.quantity)
-console_log(product.name, product.price)
+availabilityInStock(product.quantity)
+console.log(product.name, product.price)
 let count = 0;
 for (let index = 1; index <= 10; index++) {
   count +=index;
