@@ -1,38 +1,25 @@
-function rever(str) {
-  return str.split('').reverse().join('')
+function reverseString(string) {
+  return string.split('').reverse().join('')
 }
 
-function find(str, substring) {
-  if (str.indexOf(substring) !== -1) {
-    return true
-  }
-
-  return false
+function containsSubstring(string, substring) {
+return string.includes(substring)
 }
 
-function reverForMass(mass) {
-  for (let i = mass.length - 1; i != -1; i--) {
-    console.log(mass[i])
-  }
+function reverForArray(array) {
+    console.log(array.reverse())
 }
 
-function main() {
-  let str = 'Hello World'
-  console.log(`Длина ${str.length}`)
-  str = rever(str)
-  console.log(`Реверс ${str}`)
-  console.log(`Содержит подстроку ${find(str, 'He')}`)
-  const mass = ['string', 5]
-  console.log(`Количество элементов ${mass.length}`)
-  mass.push(true)
-  mass.unshift('c++ gadost')
-  console.log(`Новое количество элементов ${mass.length}`)
-  while (mass.length > 2) {
-    mass.pop()
-  }
-  for (const el of mass) {
-    console.log(el)
-  }
-  reverForMass(mass)
-}
-main()
+let string = 'Hello World'
+console.log(`Длина ${string.length}`)
+string = reverseString(string)
+console.log(`Реверс ${string}`)
+console.log(`Содержит подстроку ${containsSubstring(string, 'eH')}`)
+const array = ['string', 5]
+console.log(`Количество элементов ${array.length}`)
+array.push(true)
+array.unshift('c++ gadost')
+console.log(`Новое количество элементов ${array.length}`)
+  const newArray = array.slice(0,2)
+  console.log(newArray)
+reverForArray(newArray)
