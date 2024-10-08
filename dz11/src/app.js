@@ -6,7 +6,7 @@ function containsSubstring(string, substring) {
 return string.includes(substring)
 }
 
-function reverForArray(array) {
+function reverseForArray(array) {
     console.log(array.reverse())
 }
 
@@ -19,7 +19,9 @@ const array = ['string', 5]
 console.log(`Количество элементов ${array.length}`)
 array.push(true)
 array.unshift('c++ gadost')
+array.push('pork wings')
+array.unshift(11)
 console.log(`Новое количество элементов ${array.length}`)
 const newArray = array.slice(0,2)
 console.log(newArray)
-reverForArray(newArray)
+reverseForArray(newArray)
