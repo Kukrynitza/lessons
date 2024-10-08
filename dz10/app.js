@@ -1,17 +1,17 @@
-function inStock(quantity){
+function inStock(quantity) {
   if (quantity > 10) {
-    console.log(`Товара достаточно`)
+    console.log('Товара достаточно')
   }
-  else if(1 <= quantity && quantity <= 10){
-    console.log(`Мало товара`)
+  else if (quantity >= 1 && quantity <= 10) {
+    console.log('Мало товара')
   }
-  else{
-    console.log(`Товар закончился`)
+  else {
+    console.log('Товар закончился')
   }
 }
 
-function consoleLog(name, price){
-  const string =`${name} стоит(-ят) ${price} рублей`
+function consoleLog(name, price) {
+  const string = `${name} стоит(-ят) ${price} рублей`
   console.log(string)
 }
 
@@ -24,7 +24,7 @@ console.log(product)
 inStock(product.quantity)
 consoleLog(product.name, product.price)
 let count = 0
-for (let index = 1; index <= 10; index++) {
-  count +=index
+for (let index = 1; index <= 10; index += 1) {
+  count += index
 }
 console.log(count)
