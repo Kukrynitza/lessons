@@ -1,4 +1,4 @@
-function availabilityInStock(quantity){
+function inStock(quantity){
   if (quantity > 10) {
     console.log(`Товара достаточно`)
   }
@@ -10,7 +10,7 @@ function availabilityInStock(quantity){
   }
 }
 
-function ConsoleLog(name, price){
+function consoleLog(name, price){
   const string =`${name} стоит(-ят) ${price} рублей`
   console.log(string)
 }
@@ -21,10 +21,10 @@ const product = {
   quantity: 1
 }
 console.log(product)
-availabilityInStock(product.quantity)
-console.log(product.name, product.price)
-let count = 0;
+inStock(product.quantity)
+consoleLog(product.name, product.price)
+let count = 0
 for (let index = 1; index <= 10; index++) {
-  count +=index;
+  count +=index
 }
 console.log(count)
