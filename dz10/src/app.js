@@ -1,11 +1,9 @@
 function inStock(quantity) {
   if (quantity > 10) {
     console.log('Товара достаточно')
-  }
-  else if (quantity >= 1 && quantity <= 10) {
+  } else if (quantity >= 1 && quantity <= 10) {
     console.log('Мало товара')
-  }
-  else {
+  } else {
     console.log('Товар закончился')
   }
 }
