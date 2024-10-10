@@ -1,0 +1,8 @@
+{
+  "name": "dz10",
+  "private": "true",
+  "devDependencies": {
+    "@shcherbin/eslint-config-node": "^0.2.0",
+    "eslint": "^8.57.1"
+  }
+}
