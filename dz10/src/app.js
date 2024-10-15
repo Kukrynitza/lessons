@@ -1,4 +1,4 @@
-function inStock(quantity) {
+function determineIfThereIsEnoughProduct(quantity) {
   if (quantity > 10) {
     console.log('Товара достаточно')
   } else if (quantity >= 1 && quantity <= 10) {
@@ -8,7 +8,7 @@ function inStock(quantity) {
   }
 }
 
-function consoleLog(name, price) {
+function displayProductInformation(name, price) {
   const string = `${name} стоит(-ят) ${price} рублей`
   console.log(string)
 }
@@ -19,8 +19,8 @@ const product = {
   quantity: 1
 }
 console.log(product)
-inStock(product.quantity)
-consoleLog(product.name, product.price)
+determineIfThereIsEnoughProduct(product.quantity)
+displayProductInformation(product.name, product.price)
 let count = 0
 for (let index = 1; index <= 10; index += 1) {
   count += index
