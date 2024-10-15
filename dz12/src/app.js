@@ -3,10 +3,7 @@ function checkIfTheNumberIsEvenOrOdd(number) {
     if (!Number.isInteger(number)) {
       throw new Error(`${number} - не является целым числом`)
     }
-    if (number % 2 === 0) {
-      return 'Четное'
-    }
-    return 'Нечетное'
+    return number % 2 === 0 ? 'Четное' : 'Нечетное'
   } catch (error) {
     return `${number} - не является целым числом`
   }
@@ -14,13 +11,10 @@ function checkIfTheNumberIsEvenOrOdd(number) {
 
 function searchForCarWithGivenColor(cars, color) {
   const car = cars.find((findCar) => findCar.color === color)
-  if (car) {
-    return true
-  }
-  return false
+  return Boolean(car)
 }
 
-let counter = 0
+let counter = -1
 while (counter <= 20) {
   counter += 1
   if (counter > 15) {
@@ -75,9 +69,9 @@ const purchases = [
   { item: 'Phone', date: '2023-09-01' }
 ]
 
-for (const user of users) {
-  console.log(`Имя пользователя: ${user.name},Возраст: ${user.age}`)
-}
+users.forEach((user) => {
+  console.log(`Имя пользователя: ${user.name}, Возраст: ${user.age}`)
+})
 
 const newProducts = products.map((product) => ({
   name: product.name,
@@ -86,10 +80,10 @@ const newProducts = products.map((product) => ({
 }))
 
 const newTasks = tasks.filter((task) => task.completed)
-const newStudents = students.sort((a, b) => b.grade - a.grade)
+const newStudents = students.toSorted((a, b) => b.grade - a.grade)
 console.log(newProducts)
 console.log(newTasks)
 console.log(newStudents)
 console.log(books.find((book) => book.author === 'George Orwell'))
-console.log(searchForCarWithGivenColor(cars, 'white'))
-console.log(purchases.reverse())
+console.log(searchForCarWithGivenColor(cars, 'black'))
+console.log(purchases.toReversed())
