@@ -1,35 +1,30 @@
+function isSomeProductInStock(productsList) {
+  return productsList.some((product) => product.inStock)
+}
+
+function makeUserTotalBalance(transactions) {
+  const newTransactions = transactions.reduce((result, transaction) => {
+    if (transaction.type === 'income') {
+      return result + transaction.amount
+    }
+    return result - transaction.amount
+  }, 0)
+  return newTransactions
+}
+
 function entriesArray(array) {
   return array.flat(Infinity)
 }
-
-// function setKeysAndObjectInfo(user) {
-//   const entriesUser = Object.entries(user)
-//   const keyUser = []
-//   for (const key of entriesUser) {
-//     key.pop()
-//     keyUser.push(key)
-//   }
-//   console.log(keyUser.flat())
-// }
-function setKeysAndObjectInfo(user, type) {
-  if (type === 'key') {
-    const newUser = Object.keys(user)
-    return newUser
-  }
-  const newUser = Object.values(user)
-  return newUser
+function getObjectKeysOrValues(object, type) {
+  return type === 'key' ? Object.keys(object) : Object.values(object)
 }
 
-function logInCheck(cart) {
-  const newCart = Object.entries(cart)
-  for (const logCart of newCart) {
-    console.log(`${logCart[0]}: ${logCart[1]} шт.`)
-  }
+function logInCheck(carts) {
+  Object.entries(carts).forEach((cart) => (console.log(`${cart[0]}: ${cart[1]} шт.`)))
 }
 
 function mergeSettings(defaultSettings, userPreferences) {
-  const resultSettings = { ...defaultSettings, ...userPreferences }
-  return resultSettings
+  return { ...defaultSettings, ...userPreferences }
 }
 
 function checkUserAge(user) {
@@ -50,7 +45,7 @@ function checkNumber(number) {
     if (number > 10) {
       resolve('Число больше 10')
     } else {
-      reject('Число меньше или равно 10')
+      reject(new Error('Число меньше или равно 10'))
     }
   })
 }
@@ -63,12 +58,12 @@ function delayedMessage(string, time) {
 
 async function fetchProducts() {
   try {
-    const data = await fetch('https://dummyjson.com/products?limit=10&select=title,price')
-    if (!data.ok) {
+    const response = await fetch('https://dummyjson.com/products?limit=10&select=title,price')
+    if (!response.ok) {
       throw new Error('Не найден json')
     }
-    const newData = await data.json()
-    console.log(newData.products[0])
+    const data = await response.json()
+    console.log(data.products[0])
   } catch (error) {
     console.log('Не удалось получить данные')
   }
@@ -81,22 +76,22 @@ const products = [
   { id: 2, name: 'Ноутбук', inStock: false },
   { id: 3, name: 'Часы', inStock: false }
 ]
-console.log(products.some((product) => product.inStock === true))
+console.log(isSomeProductInStock(products))
 const transactions = [
   { id: 1, type: 'income', amount: 500 },
   { id: 2, type: 'expense', amount: 100 },
   { id: 3, type: 'income', amount: 200 },
   { id: 4, type: 'expense', amount: 50 }
 ]
-const newTransactions = transactions.reduce((result, transaction) => result + transaction.amount, 0)
-console.log(newTransactions)
+
+console.log(makeUserTotalBalance(transactions))
 const user = {
   name: 'John',
   email: 'john@example.com',
   age: 13
 }
-console.log(setKeysAndObjectInfo(user, 'key'))
-console.log(setKeysAndObjectInfo(user, 'val'))
+console.log(getObjectKeysOrValues(user, 'key'))
+console.log(getObjectKeysOrValues(user, 'val'))
 const cart = {
   apple: 2,
   banana: 3,
