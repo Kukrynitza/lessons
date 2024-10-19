@@ -3,24 +3,24 @@ function isSomeProductInStock(productsList) {
 }
 
 function makeUserTotalBalance(transactions) {
-  const newTransactions = transactions.reduce((result, transaction) => {
-    if (transaction.type === 'income') {
-      return result + transaction.amount
-    }
-    return result - transaction.amount
-  }, 0)
-  return newTransactions
+  return transactions.reduce((result, transaction) => (
+    transaction.type === 'income'
+      ? result + transaction.amount
+      : result - transaction.amount
+  ), 0)
 }
 
-function entriesArray(array) {
+function flattenArray(array) {
   return array.flat(Infinity)
 }
 function getObjectKeysOrValues(object, type) {
   return type === 'key' ? Object.keys(object) : Object.values(object)
 }
 
-function logInCheck(carts) {
-  Object.entries(carts).forEach((cart) => (console.log(`${cart[0]}: ${cart[1]} шт.`)))
+function logCartProducts(cart) {
+  Object.entries(cart).forEach(([product, count]) => {
+    console.log(`${product}: ${count} шт.`)
+  })
 }
 
 function mergeSettings(defaultSettings, userPreferences) {
@@ -50,9 +50,9 @@ function checkNumber(number) {
   })
 }
 
-function delayedMessage(string, time) {
+function delayMessage(message, time) {
   setTimeout(() => {
-    console.log(string)
+    console.log(message)
   }, time)
 }
 
@@ -60,17 +60,17 @@ async function fetchProducts() {
   try {
     const response = await fetch('https://dummyjson.com/products?limit=10&select=title,price')
     if (!response.ok) {
-      throw new Error('Не найден json')
+      throw new Error('Ошибка при выполнении запроса')
     }
     const data = await response.json()
     console.log(data.products[0])
   } catch (error) {
-    console.log('Не удалось получить данные')
+    console.log('Не удалось получить продукт', error)
   }
 }
 
 const nestedArray = [[1, 2], [3, [4, 5]], 6]
-console.log(entriesArray(nestedArray))
+console.log(flattenArray(nestedArray))
 const products = [
   { id: 1, name: 'Телефон', inStock: true },
   { id: 2, name: 'Ноутбук', inStock: false },
@@ -97,7 +97,7 @@ const cart = {
   banana: 3,
   orange: 1
 }
-logInCheck(cart)
+logCartProducts(cart)
 const defaultSettings = {
   theme: 'light',
   notifications: true,
@@ -117,5 +117,5 @@ checkNumber(12)
   .catch((error) => {
     console.log(error)
   })
-delayedMessage('Hello World', 1000)
+delayMessage('Hello World', 1000)
 fetchProducts()
