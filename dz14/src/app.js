@@ -47,8 +47,3 @@ async function getUserInfoFromFirstSite() {
 }
 
 getUserInfoFromFirstSite().then((date) => console.log(date))
-const productsList = document.querySelectorAll('.products li')
-productsList[1].style.color = 'yellow'
-productsList.forEach((product) => {
-  product.style.textDecoration = 'underline'
-})
