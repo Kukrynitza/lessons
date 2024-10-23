@@ -52,17 +52,18 @@ submitElement.addEventListener('submit', toConsole)
 async function getRequest() {
   const query = document.querySelector('aside form input').value
   try {
-    const resolve = await fetch(`https://dummyjson.com/products/search?q=${query}`)
-    if (!resolve.ok) {
+    const response = await fetch(`https://dummyjson.com/products/search?q=${query}`)
+    if (!response.ok) {
       throw new Error('Ошибка')
     }
-    const { products } = await resolve.json()
-    const listOfProducts = products.map(({ title }) => title)
-    console.log(listOfProducts)
+    const { products } = await response.json()
+    // const listOfProducts = products.map(({ title }) => title)
+    console.log(products)
   } catch (error) {
     console.error('Произошла ошибка при загрузке данных:', error)
   }
 }
+
 const buttonRequest = document.createElement('button')
 const textRequest = document.createElement('input')
 textRequest.type = 'text'
