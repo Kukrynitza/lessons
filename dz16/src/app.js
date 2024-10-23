@@ -42,9 +42,32 @@ document.querySelector('div').append(alertElement)
 outerElement.removeEventListener('click', outerElement)
 // №4
 function toConsole() {
-  const event = document.querySelector('.text')
+  const submitElement = document.querySelector('.text').value
   // event.preventDefault()
-  console.log('событие', event.target.value)
+  console.log('событие', submitElement)
 }
 const submitElement = document.querySelector('.submit')
 submitElement.addEventListener('submit', toConsole)
+// №5
+async function getRequest() {
+  const query = document.querySelector('aside form input').value
+  try {
+    const resolve = await fetch(`https://dummyjson.com/products/search?q=${query}`)
+    if (!resolve.ok) {
+      throw new Error('Ошибка')
+    }
+    const { products } = await resolve.json()
+    const listOfProducts = products.map(({ title }) => title)
+    console.log(listOfProducts)
+  } catch (error) {
+    console.error('Произошла ошибка при загрузке данных:', error)
+  }
+}
+const buttonRequest = document.createElement('button')
+const textRequest = document.createElement('input')
+textRequest.type = 'text'
+textRequest.className = 'text'
+textRequest.placeholder = 'Введите запрос'
+buttonRequest.textContent = 'Искать'
+buttonRequest.addEventListener('click', getRequest)
+document.querySelector('aside form').append(textRequest, buttonRequest)
