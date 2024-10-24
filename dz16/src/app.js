@@ -49,7 +49,8 @@ function toConsole() {
 const submitElement = document.querySelector('.submit')
 submitElement.addEventListener('submit', toConsole)
 // №5
-async function getRequest() {
+async function getRequest(event) {
+  event.preventDefault()
   const query = document.querySelector('aside form input').value
   try {
     const response = await fetch(`https://dummyjson.com/products/search?q=${query}`)
@@ -57,8 +58,15 @@ async function getRequest() {
       throw new Error('Ошибка')
     }
     const { products } = await response.json()
-    // const listOfProducts = products.map(({ title }) => title)
-    console.log(products)
+    const listOfProducts = products.map(({ title }) => title)
+    const ul = document.createElement('ul')
+    document.querySelector('main').append(ul)
+    listOfProducts.forEach((product) => {
+      const li = document.createElement('li')
+      li.textContent = product
+      document.querySelector('ul').append(li)
+    })
+    console.log(listOfProducts)
   } catch (error) {
     console.error('Произошла ошибка при загрузке данных:', error)
   }
