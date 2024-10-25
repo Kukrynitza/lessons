@@ -2,7 +2,7 @@
   "name": "dz17",
   "private": "true",
   "devDependencies": {
-    "@shcherbin/eslint-config-node": "^0.3.0",
-    "eslint": "^8.57.1"
+    "@shcherbin/eslint-config": "^0.6.0",
+    "eslint": "^9.13.0"
   }
 }
