@@ -115,9 +115,44 @@ async function fetchTodos(event){
     }
   });
 }
+function fetchFromLocaleStorage(event){
+  event.preventDefault()
+  const keys = Object.keys(localStorage)
+  keys.forEach((key) => {
+    const div = document.createElement('div')
+    const newLabel = document.createElement('label')
+    const newRequest = document.createElement('input')
+    const newRemoveRequest =document.createElement('input')
+    newRemoveRequest.type = 'checkbox'
+    newRemoveRequest.className = 'remove-request'
+    newRemoveRequest.addEventListener('click', removeRequest)
+      newLabel.className = 'label'
+      newRequest.type = 'checkbox'
+      newRequest.className = 'checkbox'
+    if(window.localStorage.getItem(localStorage.getItem(key)) === 'false'){
+    newRequest.addEventListener('click', checkboxIventRocket)
+    newLabel.appendChild(newRequest)
+    newLabel.appendChild(document.createTextNode(key))
+    }
+    else{
+      newLabel.prepend(createSVG())
+      newRequest.style.backgroundColor= '#19213f'
+      newRequest.addEventListener('click', checkboxIventRocket)
+      newLabel.appendChild(document.createTextNode(key))
+      newLabel.appendChild(newRequest)
+    }
+    div.appendChild(newLabel)
+    div.appendChild(newRemoveRequest)
+    document.querySelector('.requests').appendChild(div)
+  })
+  const button = event.target
+  button.remove()
+}
 const addNewTodos = document.querySelector('.add-new-todos')
 addNewTodos.addEventListener('submit', newRequests)
 const buttonClear = document.querySelector('.clear')
 buttonClear.addEventListener('click', clearLocalStorage)
 const buttonFetch = document.querySelector('.fetch')
+const buttonFetchFromLocaleStorage = document.querySelector('.fetch-from-locale-storage')
+buttonFetchFromLocaleStorage.addEventListener('click', fetchFromLocaleStorage)
 buttonFetch.addEventListener('click', fetchTodos)
