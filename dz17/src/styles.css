@@ -47,8 +47,8 @@ button {
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   background-color: #b7e3d8;
   border-radius: 3px;
 }
@@ -68,7 +68,9 @@ label {
 }
 
 header {
-  display: grid;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 5px;
   justify-content: end;
   padding-right: 5px;
 }
@@ -84,11 +86,6 @@ header {
 }
 
 .label {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-header {
   display: flex;
   flex-wrap: nowrap;
   gap: 5px;
@@ -110,4 +107,18 @@ button:hover {
 
 label:hover {
   text-decoration: solid underline #33288f;
+}
+
+.remove-request {
+  width: 20px;
+  height: 20px;
+  background-color: #d35b24;
+  border-radius: 3px;
+}
+
+div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
 }
