@@ -5,7 +5,6 @@ export default [
   {
     rules: {
       'no-console': 'off'
-    },
-    "type": "module"
+    }
   }
 ]
