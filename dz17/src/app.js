@@ -129,7 +129,7 @@ function fetchFromLocaleStorage(event){
       newLabel.className = 'label'
       newRequest.type = 'checkbox'
       newRequest.className = 'checkbox'
-    if(window.localStorage.getItem(localStorage.getItem(key)) === 'false'){
+      if(window.localStorage.getItem(key) === 'false'){
     newRequest.addEventListener('click', checkboxIventRocket)
     newLabel.appendChild(newRequest)
     newLabel.appendChild(document.createTextNode(key))
