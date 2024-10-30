@@ -47,7 +47,7 @@ async function findProductsByCategoryAndCount(category) {
   return data.products.length
 }
 
-async function findProductsByCategoryAndMaxMinAverageCostAndProductsList(category) {
+async function findCategoryProductsStats(category) {
   const response = await fetch(`https://dummyjson.com/products/category/${category}`)
   const data = await response.json()
   const costArray = data.products.map((cost) => cost.price)
@@ -65,7 +65,7 @@ async function findProductsByCategoryAndMaxMinAverageCostAndProductsList(categor
   }
 }
 
-async function getProductsGroupedByCategory() {
+async function getListOfCategory() {
   const response = await fetch('https://dummyjson.com/products?limit=20&select=title,category')
   const { products } = await response.json()
   return products.reduce((result, elementFromProduct) => {
@@ -77,25 +77,38 @@ async function getProductsGroupedByCategory() {
 }
 
 async function getProductsGroupedByCategoryAndCount() {
-  const categories = await getProductsGroupedByCategory()
-  return Promise.all(categories.map(async (category) => (
-    { [category]: await findProductsByCategoryAndCount(category) }
-  )))
+  const categories = await getListOfCategory()
+  return Promise.all(categories.map(async (category) => ({
+    [category]: await findProductsByCategoryAndCount(category)
+  })))
+}
+
+function getProduct(products, category) {
+  const listOfProducts = products.filter((product) => product.category === category)
+  return listOfProducts.map((element) => ({
+    id: element.id,
+    title: element.title
+  }))
 }
 
 async function getProductsGroupedByCategoryForInfo() {
-  const categories = await getProductsGroupedByCategory()
-  const categoriesWithInfo = await Promise.all(categories.map(async (category) => (
-    { [category]: await findProductsByCategory(category) }
-  )))
+  const response = await fetch('https://dummyjson.com/products?limit=20&select=title,category')
+  const { products } = await response.json()
+  const categories = await getListOfCategory()
+  const categoriesWithInfo = categories.map((category) => (
+    {
+      [category]: getProduct(products, category)
+    }
+  ))
   const result = categoriesWithInfo.reduce((res, category) => ({ ...res, ...category }), {})
+
   return result
 }
 
-async function getProductsGroupedByCategoryAndMaxMinAverageCostAndProductsList() {
-  const categories = await getProductsGroupedByCategory()
+async function groupProductsByCategoryWithCostStats() {
+  const categories = await getListOfCategory()
   return Promise.all(categories.map(async (category) => (
-    { [category]: await findProductsByCategoryAndMaxMinAverageCostAndProductsList(category) }
+    { [category]: await findCategoryProductsStats(category) }
   )))
 }
 
@@ -112,7 +125,7 @@ async function main() {
   console.log(await getProductPricesByCategories(categories))
   console.log(await getProductsGroupedByCategoryAndCount())
   console.log(await getProductsGroupedByCategoryForInfo())
-  console.log(await getProductsGroupedByCategoryAndMaxMinAverageCostAndProductsList())
+  console.log(await groupProductsByCategoryWithCostStats())
 }
 
 main()
