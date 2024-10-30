@@ -16,9 +16,9 @@ function createSVG() {
 function removeRequest(event) {
   event.preventDefault()
   const checkbox = event.target
-  const div = checkbox.parentNode
-  const text = div.querySelector('label').outerText
-  div.remove()
+  const li = checkbox.parentNode
+  const text = li.querySelector('label').outerText
+  li.remove()
   window.localStorage.removeItem(text)
 }
 
@@ -35,6 +35,7 @@ function checkboxIventRocket(event) {
       label.prepend(createSVG()); checkbox.style.backgroundColor = '#19213f'; label.appendChild(checkbox)
     }, 1000)
     window.localStorage.setItem(label.innerText, JSON.stringify(true))
+    label.style.textDecoration = 'line-through'
   } else {
     const svg = label.querySelector('svg')
     const checkboxes = label.querySelector('.checkbox')
@@ -54,6 +55,7 @@ function checkboxIventRocket(event) {
       newRequest.style.backgroundColor = '#dce4fb'
     }, 1100)
     window.localStorage.setItem(label.innerText, JSON.stringify(false))
+    label.style.textDecoration = 'none'
   }
 }
 
@@ -66,7 +68,7 @@ function newRequests(event) {
   }
 
   window.localStorage.setItem(text, JSON.stringify(false))
-  const div = document.createElement('div')
+  const li = document.createElement('li')
   const newLabel = document.createElement('label')
   const newRequest = document.createElement('input')
   const newRemoveRequest = document.createElement('input')
@@ -79,23 +81,22 @@ function newRequests(event) {
   newRemoveRequest.addEventListener('click', removeRequest)
   newLabel.appendChild(newRequest)
   newLabel.appendChild(document.createTextNode(text))
-  div.appendChild(newLabel)
-  div.appendChild(newRemoveRequest)
-  document.querySelector('.requests').appendChild(div)
+  li.appendChild(newLabel)
+  li.appendChild(newRemoveRequest)
+  document.querySelector('.requests').appendChild(li)
 }
 function clearLocalStorage() {
   window.localStorage.clear()
   const form = document.querySelector('.requests')
   form.innerHTML = '<form action="get" class="requests"></form>'
 }
-async function fetchTodos(event) {
-  event.preventDefault()
+async function fetchTodos() {
   const requests = await fetch('https://dummyjson.com/todos?limit=3')
   const { todos } = await requests.json()
   todos.forEach((element) => {
-    if (window.localStorage.getItem(element.todo) === null) {
+    if (!window.localStorage.getItem(element.todo)) {
       window.localStorage.setItem(element.todo, JSON.stringify(element.completed))
-      const div = document.createElement('div')
+      const li = document.createElement('li')
       const newLabel = document.createElement('label')
       const newRequest = document.createElement('input')
       const newRemoveRequest = document.createElement('input')
@@ -105,6 +106,9 @@ async function fetchTodos(event) {
       newLabel.className = 'label'
       newRequest.type = 'checkbox'
       newRequest.className = 'checkbox'
+      li.appendChild(newLabel)
+      li.appendChild(newRemoveRequest)
+      document.querySelector('.requests').appendChild(li)
       if (window.localStorage.getItem(element.todo) === 'false') {
         newRequest.addEventListener('click', checkboxIventRocket)
         newLabel.appendChild(newRequest)
@@ -116,9 +120,6 @@ async function fetchTodos(event) {
         newLabel.appendChild(document.createTextNode(element.todo))
         newLabel.appendChild(newRequest)
       }
-      div.appendChild(newLabel)
-      div.appendChild(newRemoveRequest)
-      document.querySelector('.requests').appendChild(div)
     }
   })
 }
@@ -126,7 +127,7 @@ function fetchFromLocaleStorage(event) {
   event.preventDefault()
   const keys = Object.keys(localStorage)
   keys.forEach((key) => {
-    const div = document.createElement('div')
+    const li = document.createElement('li')
     const newLabel = document.createElement('label')
     const newRequest = document.createElement('input')
     const newRemoveRequest = document.createElement('input')
@@ -136,6 +137,9 @@ function fetchFromLocaleStorage(event) {
     newLabel.className = 'label'
     newRequest.type = 'checkbox'
     newRequest.className = 'checkbox'
+    li.appendChild(newLabel)
+    li.appendChild(newRemoveRequest)
+    document.querySelector('.requests').appendChild(li)
     if (window.localStorage.getItem(key) === 'false') {
       newRequest.addEventListener('click', checkboxIventRocket)
       newLabel.appendChild(newRequest)
@@ -147,9 +151,6 @@ function fetchFromLocaleStorage(event) {
       newLabel.appendChild(document.createTextNode(key))
       newLabel.appendChild(newRequest)
     }
-    div.appendChild(newLabel)
-    div.appendChild(newRemoveRequest)
-    document.querySelector('.requests').appendChild(div)
   })
   const button = event.target
   button.remove()
@@ -158,7 +159,6 @@ const addNewTodos = document.querySelector('.add-new-todos')
 addNewTodos.addEventListener('submit', newRequests)
 const buttonClear = document.querySelector('.clear')
 buttonClear.addEventListener('click', clearLocalStorage)
-const buttonFetch = document.querySelector('.fetch')
 const buttonFetchFromLocaleStorage = document.querySelector('.fetch-from-locale-storage')
 buttonFetchFromLocaleStorage.addEventListener('click', fetchFromLocaleStorage)
-buttonFetch.addEventListener('click', fetchTodos)
+fetchTodos()
