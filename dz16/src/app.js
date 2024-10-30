@@ -4,8 +4,8 @@ link.addEventListener('click', ((event) => { event.preventDefault() }))
 const div = document.createElement('div')
 document.querySelector('body').append(div)
 // №1
-function innerHtmlElement() {
-  const firstElement = document.querySelector('.innerMi')
+function innerButtonClick() {
+  const firstElement = document.querySelector('.inner-mi')
   firstElement.innerHTML = `
   <ul class="list">
     <li>январь</li>
@@ -13,37 +13,45 @@ function innerHtmlElement() {
     <li>март</li>
   </ul>`
 }
-const innerElement = document.createElement('button')
-innerElement.textContent = 'Изменить содержимое первого элемента'
-innerElement.addEventListener('click', innerHtmlElement)
-document.querySelector('div').append(innerElement)
+const createUserButton = document.createElement('button')
+createUserButton.textContent = 'Изменить содержимое первого элемента'
+createUserButton.addEventListener('click', innerButtonClick)
+document.querySelector('div').append(createUserButton)
 // №2
 function outerHtmlElement() {
   const element = document.querySelector('main')
   element.outerHTML = `
-  <img src="https://i.pinimg.com/enabled_lo/564x/79/db/30/79db30c17af8f4f394a8103bb6d9c37f.jpg" alt="image">
+  <img src="https://i.pinimg.com/enabled_lo/564x/79/db/30/79db30c17af8f4f394a8103bb6d9c37f.jpg" alt="sky-men">
   `
 }
-const outerElement = document.createElement('button')
-outerElement.textContent = 'Заменить элемент'
-outerElement.addEventListener('click', outerHtmlElement)
-document.querySelector('div').append(outerElement)
+const newButton = document.createElement('button')
+newButton.textContent = 'Заменить элемент'
+newButton.addEventListener('click', outerHtmlElement)
+document.querySelector('div').append(newButton)
 // №3
 function getModalWindow() {
-  alert('Ты тоже?')
+  const modalWindow = prompt('What do you need to watch out for in C++ to make inheritance work?')
+  if(modalWindow === 'include')
+    {
+  alert(modalWindow)
 }
-const alertElement = document.createElement('button')
-alertElement.textContent = 'Открыть модальное окно'
-alertElement.addEventListener('click', getModalWindow)
-document.querySelector('div').append(alertElement)
+else{
+  alert(modalWindow + ' - thats what I thought, but in reality <include>')
+}
+return
+}
+const updateTaskButton = document.createElement('button')
+updateTaskButton.textContent = 'Открыть модальное окно'
+updateTaskButton.addEventListener('click', getModalWindow)
+document.querySelector('div').append(updateTaskButton)
 
-// setTimeout(innerElement.removeEventListener('click', innerHtmlElement), 5000)
-// setTimeout(alertElement.removeEventListener('click', getModalWindow), 5000)
+setTimeout(innerElement.removeEventListener('click', innerHtmlElement), 5000)
+setTimeout(alertElement.removeEventListener('click', getModalWindow), 5000)
 outerElement.removeEventListener('click', outerElement)
 // №4
 function toConsole() {
   const submitElement = document.querySelector('.text').value
-  // event.preventDefault()
+  event.preventDefault()
   console.log('событие', submitElement)
 }
 const submitElement = document.querySelector('.submit')
@@ -72,11 +80,11 @@ async function getRequest(event) {
   }
 }
 
-const buttonRequest = document.createElement('button')
+const button = document.createElement('button')
 const textRequest = document.createElement('input')
 textRequest.type = 'text'
 textRequest.className = 'text'
 textRequest.placeholder = 'Введите запрос'
-buttonRequest.textContent = 'Искать'
-buttonRequest.addEventListener('click', getRequest)
+button.textContent = 'Искать'
+button.addEventListener('click', getRequest)
 document.querySelector('aside form').append(textRequest, buttonRequest)
