@@ -4,8 +4,8 @@ body {
   gap: 16px;
   align-items: start;
   max-width: 920px;
-  margin-top: 200px;
-  margin-left: 200px;
+  padding: 200px;
+  margin: 0 auto;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 16px;
   line-height: 1.6;

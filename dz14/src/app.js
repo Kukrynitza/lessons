@@ -1,21 +1,14 @@
-async function getUserInfoFromSecondSite(userId1, userId2) {
+async function fetchUserById(userId1) {
   try {
-    const [responseUserId1, responseUserId2] = await Promise.all(
-      [
-        fetch(`https://dummyjson.com/users/${userId1}`),
-        fetch(`https://dummyjson.com/users/${userId2}`)
-      ]
-    )
-    const dataUserId1 = await responseUserId1.json()
-    const dataUserId2 = await responseUserId2.json()
-    return [dataUserId1, dataUserId2]
+    const response = await fetch(`https://dummyjson.com/users/${userId1}`)
+    return response.json()
   } catch (error) {
     console.log('Error in second site')
     return 'ERROR'
   }
 }
 
-async function getUserInfoFromFirstSite() {
+async function getListState() {
   try {
     const [responseUserId1, responseUserId2] = await Promise.all(
       [
@@ -23,13 +16,15 @@ async function getUserInfoFromFirstSite() {
         fetch('https://dummyjson.com/posts/2')
       ]
     )
-    const userId1 = await responseUserId1.json()
-    const userId2 = await responseUserId2.json()
-    const data = await getUserInfoFromSecondSite(userId1.userId, userId2.userId)
+    const users = await Promise.all([
+      responseUserId1.json(),
+      responseUserId2.json()
+    ])
+    const data = await Promise.all(users.map((post) => fetchUserById(post.userId)))
     if (data === 'ERROR') {
       throw new Error('Error in second')
     }
-    const resultData = [{ ...data[0], ...userId1 }, { ...data[1], ...userId2 }]
+    const resultData = users.map((user, index) => ({ ...user, ...data[index] }))
     const result = resultData.map((user) => ({
       id: user.id,
       title: user.title,
@@ -46,4 +41,8 @@ async function getUserInfoFromFirstSite() {
   }
 }
 
-getUserInfoFromFirstSite().then((date) => console.log(date))
+async function main() {
+  console.log(await getListState())
+}
+
+main()

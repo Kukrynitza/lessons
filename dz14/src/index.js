@@ -10,8 +10,8 @@ function changeText() {
 }
 
 function hideElement() {
-  const text = document.querySelectorAll('.products li')
-  text[2].style.visibility = 'hidden'
+  const text = document.querySelectorAll('.hidenElement')
+  text.style.visibility = 'hidden'
 }
 
 function addNewTextElement() {
