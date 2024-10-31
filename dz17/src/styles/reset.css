@@ -27,15 +27,15 @@ html {
 
 /* Reapply the pointer cursor for anchor tags */
 a,
- button {
+button {
   cursor: revert;
 }
 
 /* Remove list styles (bullets/numbers) */
 ol,
- ul,
- menu,
- summary {
+ul,
+menu,
+summary {
   list-style: none;
 }
 
@@ -57,7 +57,7 @@ table {
 
 /* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
 input,
- textarea {
+textarea {
   user-select: auto;
 }
 
