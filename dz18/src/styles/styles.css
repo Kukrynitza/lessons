@@ -49,6 +49,14 @@ h1 {
   width: 320px;
 }
 
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  width: 320px;
+}
+
 input {
   height: 44px;
   margin-bottom: 12px;
