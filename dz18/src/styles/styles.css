@@ -10,15 +10,6 @@ body {
   background-color: #d4cda9;
 }
 
-aside {
-  width: 580px;
-  height: 100%;
-  background-image: url("https://i.pinimg.com/564x/29/76/88/29768898c53aae5e17a05d372e9b9a1b.jpg");
-  background-position: center;
-  background-size: cover;
-  border-radius: 24px;
-}
-
 aside:hover {
   border: 1px;
   border-color: #1e223b;
@@ -26,12 +17,12 @@ aside:hover {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 20% 3% 40%;
   gap: 48px;
-  align-items: center;
-  justify-content: center;
-  width: calc(100% - 580px - 32px);
+  place-content: center center;
+  place-items: center center;
+  width: 100%;
   height: 100%;
 }
 
@@ -56,9 +47,10 @@ h1 {
   justify-content: center;
   width: 320px;
 }
-div{
+
+div {
   display: grid;
-  gap:2px;
+  gap: 2px;
 }
 
 .user {
@@ -177,7 +169,7 @@ a:hover {
   border-color: #1e223b;
 }
 
-h6 {
+.or {
   font-size: 27px;
   font-weight: bold;
   color: #808c92;
@@ -185,19 +177,6 @@ h6 {
 
 .select-p {
   font-size: 18px;
-}
-
-.center-form button {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 44px;
-  color: #fff;
-  cursor: pointer;
-  background-color: #1e223b;
-  border-radius: 3px;
 }
 
 .center-form button:hover {
@@ -219,25 +198,29 @@ h6 {
   color: #808c92;
 }
 
-@media (width <= 700px) {
+@media (width > 700px) {
   aside {
-    display: none;
-    width: 0;
+    width: 580px;
+    height: 100%;
+    background-image: url("https://i.pinimg.com/564x/29/76/88/29768898c53aae5e17a05d372e9b9a1b.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 24px;
   }
 
   main {
-    display: grid;
-    grid-template-rows: 20% 3% 40%;
+    display: flex;
+    flex-direction: column;
     gap: 48px;
-    place-content: center center;
-    place-items: center center;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 580px - 32px);
     height: 100%;
   }
 }
 
-.error{
-  background-color: #E54D2E;
-  border-radius: 2px;
+.error {
   text-align: center;
+  background-color: #e54d2e;
+  border-radius: 2px;
 }
