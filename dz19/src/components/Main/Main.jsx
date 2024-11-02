@@ -34,7 +34,7 @@ const courses = [
 ]
 export default function Main() {
   return (
-    <main>
+    <>
       <h1>Курсы компании «Гарцующий пони»</h1>
       <ul className={styles.courses}>
         {courses.map((element) => (
@@ -49,6 +49,6 @@ export default function Main() {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   )
 }
