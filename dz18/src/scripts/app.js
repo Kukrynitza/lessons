@@ -1,14 +1,26 @@
-async function createUser(event) {
+async function checkUser(event) {
   event.preventDefault()
   const email = event.target.querySelector('#email').value
   const userPassword = event.target.querySelector('#password').value
+  const error = document.createElement('p')
+  error.className = 'error'
+  const oldError = document.querySelector('.error')
+  if (oldError) {
+    oldError.remove()
+  }
   if (email.length < 3) {
-    document.querySelector('.login').appendChild('<p class="error">Error email length < 3</p>')
+    error.textContent = 'Error email length < 3'
+    setTimeout(() => {
+      document.querySelector('.login .email').appendChild(error)
+    }, 100)
 
     return
   }
   if (userPassword.length < 6) {
-    document.querySelector('.login').appendChild('Error: password length must be at least 6 characters')
+    error.textContent = 'Error: password length must be at least 6 characters'
+    setTimeout(() => {
+      document.querySelector('.login .password').appendChild(error)
+    }, 100)
 
     return
   }
@@ -28,4 +40,4 @@ async function createUser(event) {
 }
 
 const userSubmit = document.querySelector('.center-form')
-userSubmit.addEventListener('submit', createUser)
+userSubmit.addEventListener('submit', checkUser)
