@@ -1,9 +1,11 @@
 import { createRoot } from 'react-dom/client'
-import Body from './App.jsx'
+import App from './App.jsx'
 import './app.css'
 import './reset.css'
 
-const root = createRoot(document.querySelector('body'))
+const root = createRoot(document.querySelector('div'))
 root.render(
-  <Body />
+  <>
+    <App />
+  </>
 )
