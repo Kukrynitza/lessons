@@ -3,7 +3,7 @@ import App from './App.jsx'
 import './app.css'
 import './reset.css'
 
-const root = createRoot(document.querySelector('div'))
+const root = createRoot(document.querySelector('#app'))
 root.render(
   <>
     <App />
