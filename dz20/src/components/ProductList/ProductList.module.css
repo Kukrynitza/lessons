@@ -1,0 +1,10 @@
+span {
+  color: #ffe629;
+}
+
+.li {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  border-bottom: 1px solid #d4ff70;
+}
