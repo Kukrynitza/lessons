@@ -1,4 +1,4 @@
-import products from './Products.jsx'
+import products from '../../data/Products.jsx'
 import styles from './ProductList.module.css'
 export default function ProductList(){
   return (
