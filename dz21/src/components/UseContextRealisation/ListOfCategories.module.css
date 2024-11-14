@@ -15,13 +15,13 @@ form {
   gap: 10px;
 }
 
-.buttonChange {
+.button-change {
   text-align: center;
   background-color: #12a594;
   border-radius: 5%;
 }
 
-.buttonDelete {
+.button-delete {
   text-align: center;
   background-color: #e54d2e;
   border-radius: 5%;

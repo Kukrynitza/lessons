@@ -10,17 +10,13 @@ export default function ListOfCategories() {
   return (
     <ul>
       {categoriesList.map((category) => (
-        <CartContext.Provider value={{ categoriesList, setCategories, category }} key={category.id}>
-          <li key={category.id}>
-            <p>{category.id}</p>
-            <p>{category.name}</p>
-            <ButtonAndIvent
-              categoriesList ={categoriesList}
-              setCategories={setCategories}
-              category={category}
-            />
-          </li>
-        </CartContext.Provider>
+        <li key={category.id}>
+          <p>{category.id}</p>
+          <p>{category.name}</p>
+          <CartContext.Provider value={{ categoriesList, setCategories, category }} key={category.id}>
+            <ButtonAndIvent />
+          </CartContext.Provider>
+        </li>
       ))}
     </ul>)
 }
