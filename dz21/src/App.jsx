@@ -1,10 +1,12 @@
-import Funeral from './components/Funeral/Funeral.jsx'
+import UseStateListOfCategories from './components/UseStateRealisation/ListOfCategories.jsx'
+import CartContextListOfCategories from './components/UseContextRealisation/ListOfCategories.jsx'
 import './app.css'
 
 export default function App() {
   return (
     <>
-    <Funeral />
+      <UseStateListOfCategories />
+      <CartContextListOfCategories />
     </>
   )
 }
