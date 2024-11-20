@@ -1,8 +1,12 @@
-import { useActionState, useState } from 'react'
+import { useActionState, useEffect, useRef, useState } from 'react'
 import styles from './CenterForm.module.css'
 
 export default function CenterForm() {
+  const emailRef = useRef(null)
   const [check, setCheck] = useState(false)
+  useEffect(() => {
+    emailRef.current.focus()
+  }, [])
   async function registrationSubmit(_, formDate) {
     const email = formDate.get('email')
     const password = formDate.get('password')
@@ -38,13 +42,14 @@ export default function CenterForm() {
     <form action={submitAction} noValidate className={styles.centerForm}>
       <div>
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" placeholder="Enter your email"required/>
+        <input type="email" name="email" placeholder="Enter your email" ref={emailRef} required/>
         {message && message.error?.email && <p className={styles.error}>{message.error.email}</p>}
       </div>
       <div>
         <label htmlFor="email">Password</label>
-        <input type="password" name="password" placeholder="Create a password" required autoFocus/>
-        {message && message.error?.password && <p className={styles.error}>{message.error.password}</p>}
+        <input type="password" name="password" placeholder="Create a password" required/>
+        {message && message.error?.password && <p className={styles.error}>
+          {message.error.password}</p>}
       </div>
       <label htmlFor="cosmos">
         <p className={styles.selectP}>What is your experience of flying into space</p>

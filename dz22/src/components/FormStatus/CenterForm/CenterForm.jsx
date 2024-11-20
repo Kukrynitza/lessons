@@ -1,11 +1,15 @@
 import { useFormStatus } from 'react-dom'
 import styles from './CenterForm.module.css'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function CenterForm() {
+  const emailRef = useRef(null)
   const { data, pending } = useFormStatus()
   const [check, setCheck] = useState(false)
   const [errors, setErrors] = useState({ email: '', password: '' })
+  useEffect(() => {
+    emailRef.current.focus()
+  }, [])
   async function registrationSubmit(event) {
     event.preventDefault()
     const email = data.get('email')
@@ -39,7 +43,6 @@ export default function CenterForm() {
       alert('Congratulations, you are now an astronaut.!!!')
     }
   }
-
   function getCheck(event) {
     setCheck(event.target.checked)
   }
@@ -48,13 +51,13 @@ export default function CenterForm() {
     <form onSubmit={registrationSubmit} noValidate className={styles.centerForm}>
       <div>
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" placeholder="Enter your email" required />
+        <input type="email" name="email" placeholder="Enter your email" ref={emailRef} required />
         {errors.email && <p className={styles.error}>{errors.email}</p>}
       </div>
 
       <div>
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" placeholder="Create a password" required autoFocus />
+        <input type="password" name="password" placeholder="Create a password" required/>
         {errors.password && <p className={styles.error}>{errors.password}</p>}
       </div>
 
