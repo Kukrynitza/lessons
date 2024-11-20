@@ -1,34 +1,16 @@
-import { useState } from 'react'
+import { useActionState, useState } from 'react'
 import styles from './CenterForm.module.css'
 
 export default function CenterForm() {
   const [check, setCheck] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-  const [emailError, setEmailError] = useState('')
-  function getCheck(event) {
-    setCheck(event.target.checked)
-  }
-  function getEmail(event) {
-    setEmail(event.target.value)
-  }
-  function getPassword(event) {
-    setPassword(event.target.value)
-  }
-  async function registrationSubmit(event) {
-    event.preventDefault()
-    setEmailError('')
-    setPasswordError('')
+  async function registrationSubmit(_, formDate) {
+    const email = formDate.get('email')
+    const password = formDate.get('password')
     if (!email.includes('@')) {
-      setEmailError('Email does not contain @')
-
-      return
+      return { error: { email: 'Email does not contain @' } }
     }
     if (password.length < 6) {
-      setPasswordError('Password must be at least 6 characters long')
-
-      return
+      return { error: { password: 'Password must be at least 6 characters long' } }
     }
     const response = await fetch('https://dummyjson.com/auth/login', {
       method: 'POST',
@@ -43,19 +25,26 @@ export default function CenterForm() {
       // eslint-disable-next-line no-alert
       alert('Congratulations, you are now an astronaut.!!!')
     }
+
+    return { error: 'No' }
+  }
+  const [message, submitAction, isPending] = useActionState(registrationSubmit, {})
+
+  function getCheck(event) {
+    setCheck(event.target.checked)
   }
 
   return (
-    <form action="as" method="get" noValidate className={styles.centerForm} onSubmit={registrationSubmit}>
+    <form action={submitAction} noValidate className={styles.centerForm}>
       <div>
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" value={email} placeholder="Enter your email" onChange={getEmail} required/>
-        {emailError && <p className={styles.error}>{emailError}</p>}
+        <input type="email" name="email" placeholder="Enter your email"required/>
+        {message && message.error?.email && <p className={styles.error}>{message.error.email}</p>}
       </div>
       <div>
         <label htmlFor="email">Password</label>
-        <input type="password" name="password" value={password} onChange={getPassword} placeholder="Create a password" required autoFocus/>
-        {passwordError && <p className={styles.error}>{passwordError}</p>}
+        <input type="password" name="password" placeholder="Create a password" required autoFocus/>
+        {message && message.error?.password && <p className={styles.error}>{message.error.password}</p>}
       </div>
       <label htmlFor="cosmos">
         <p className={styles.selectP}>What is your experience of flying into space</p>
@@ -77,7 +66,7 @@ export default function CenterForm() {
         </span>
         I agree with <a href="a">Terms and Conditions</a>
       </label>
-      <button>Create account</button>
+      <button disabled={isPending}>Create account</button>
       <p className={styles.pLitle}>Already have an account?
         <a className={styles.aLitle}>Log in</a>
       </p>

@@ -1,5 +1,5 @@
-import TopForm from '../TopForm/TopForm.jsx'
 import CenterForm from '../CenterForm/CenterForm.jsx'
+import TopForm from '../TopForm/TopForm.jsx'
 import styles from './Main.module.css'
 
 export default function Main() {
