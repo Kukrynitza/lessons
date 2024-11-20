@@ -1,0 +1,7 @@
+{
+  "name": "dz9",
+  "devDependencies": {
+    "@shcherbin/stylelint-config": "^0.2.0",
+    "stylelint": "^16.9.0"
+  }
+}

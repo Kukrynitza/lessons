@@ -1,0 +1,103 @@
+body {
+  display: grid;
+  justify-items: center;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  line-height: 1.5;
+  color: #eeeeec;
+  background-color: #191918;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 64px;
+  justify-content: center;
+  width: 864px;
+  margin-top: 80px;
+}
+
+.img {
+  width: 300px;
+}
+
+.photos {
+  display: grid;
+  gap: 32px;
+}
+
+dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+.scroll-photo {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 24px;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
+}
+
+.scroll-photo li {
+  flex: 0 0 120px;
+}
+
+.info {
+  display: grid;
+  gap: 48px;
+}
+
+.info div {
+  display: grid;
+  gap: 24px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.button {
+  justify-self: flex-start;
+  padding: 1px 24px;
+  font-weight: 500;
+  line-height: 25.6px;
+  color: #191918;
+  background-color: #d4b3a5;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+  transition-property: background-color, transform;
+}
+
+.button:hover {
+  background-color: #a18072;
+  transform: scale(1.05);
+}
+
+h2 {
+  font-weight: 700;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+summary {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.details {
+  display: grid;
+  gap: 32px;
+}
