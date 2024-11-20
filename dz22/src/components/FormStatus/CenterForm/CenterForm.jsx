@@ -1,8 +1,9 @@
-import { useFormStatus, useState } from 'react'
+import { useFormStatus } from 'react-dom'
 import styles from './CenterForm.module.css'
+import { useState } from 'react'
 
 export default function CenterForm() {
-  const { action, data, method, pending } = useFormStatus()
+  const { data, pending } = useFormStatus()
   const [check, setCheck] = useState(false)
   const [errors, setErrors] = useState({ email: '', password: '' })
   async function registrationSubmit(event) {
@@ -10,6 +11,7 @@ export default function CenterForm() {
     const email = data.get('email')
     const password = data.get('password')
     const validationErrors = {}
+
     if (!email.includes('@')) {
       validationErrors.email = 'Email does not contain @'
     }
@@ -36,8 +38,6 @@ export default function CenterForm() {
       // eslint-disable-next-line no-alert
       alert('Congratulations, you are now an astronaut.!!!')
     }
-
-    return { error: 'No' }
   }
 
   function getCheck(event) {
