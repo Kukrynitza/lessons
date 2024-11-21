@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { CartContext } from '../Context/CartContext.jsx'
+import GetInstruction from './GetInstruction.jsx'
 import styles from './Recipes.module.css'
 
 export default function Recipes() {
@@ -24,31 +26,15 @@ export default function Recipes() {
       ...instructions, { name, instructions: recipes[0].instructions }
     ])
   }
-  function deleteInstruction(title) {
-    setInstructionsList(instructionsList.filter((instruction) => instruction.name !== title))
-  }
-  function getInstructionForP(title) {
-    const index = instructionsList.findIndex((instruction) => instruction.name === title)
-
-    if (index === -1) {
-      return (<p>Click on recipe</p>)
-    }
-
-    return (
-      <ul className={styles.instruction} onClick={() => deleteInstruction(title)}>
-        {instructionsList[index].instructions.map((instruction) => (
-          <li key={instruction}>{instruction}</li>
-        ))}
-      </ul>
-    )
-  }
 
   return (
     <ul>
       {recipesList.map(({ title }) => (
         <li key={title} className={styles.column}>
-          <p onClick={getInstruction}>{title}</p>
-          {getInstructionForP(title)}
+          <button onClick={getInstruction}>{title}</button>
+          <CartContext value={{ instructionsList, setInstructionsList, title }}>
+            <GetInstruction />
+          </CartContext>
         </li>
       ))}
     </ul>

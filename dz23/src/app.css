@@ -1,4 +1,7 @@
 body {
+  font-family: Geo, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: #1e223b;
   background-color: #d4cda9;
 }
 
@@ -8,7 +11,4 @@ body {
   gap: 32px;
   justify-content: center;
   padding: 2%;
-  font-family: Geo, Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  color: #1e223b;
 }
