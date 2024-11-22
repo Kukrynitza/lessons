@@ -1,0 +1,15 @@
+.checkbox {
+  width: 30px;
+  height: 30px;
+  background-color: aquamarine;
+  background-position: center;
+  background-size: cover;
+  border: 2px solid #000;
+  border-radius: 5px;
+  transition: background-image 0.3s ease, background-color 0.3s ease;
+}
+
+.checkbox:checked {
+  background-color: lightblue;
+  background-image: url("./image.png");
+}
