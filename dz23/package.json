@@ -17,10 +17,11 @@
     "vite": "^5.4.11"
   },
   "dependencies": {
-    "react": "19.0.0-rc.1",
-    "react-dom": "19.0.0-rc.1",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "react": "19.0.0-rc.1",
+    "react-dom": "19.0.0-rc.1",
+    "swr": "^2.2.5",
     "the-new-css-reset": "^1.11.3"
   },
   "type": "module"

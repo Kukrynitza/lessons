@@ -1,23 +1,56 @@
-import { useContext, useState } from 'react'
-import { CartContext } from '../Context/CartContext.jsx'
+import { useContext, useEffect, useState } from 'react'
+import useSWR from 'swr'
 import styles from './Recipes.module.css'
 
-export default function GetInstruction() {
-  const { instructionsList, setInstructionsList, title } = useContext(CartContext)
-  function deleteInstruction() {
-    setInstructionsList(instructionsList.filter((instruction) => instruction.name !== title))
-  }
-  const index = instructionsList.findIndex((instruction) => instruction.name === title)
+export default function GetInstruction({ title }) {
+  const fetcher = async (get) => {
+    const response = await fetch(get)
 
-  if (index === -1) {
-    return (<p>Click on recipe</p>)
+    return response.json()
+  }
+  const { data, error, isLoading } = useSWR(`https://dummyjson.com/recipes/search?q=${title}`, fetcher)
+  if (error) {
+    return (<div>failed to load</div>)
+  }
+  if (isLoading) {
+    return (<div>loading...</div>)
   }
 
   return (
-    <ul className={styles.instruction} onClick={() => deleteInstruction(title)}>
-      {instructionsList[index].instructions.map((instruction) => (
-        <li key={instruction}>{instruction}</li>
+    <ul>
+      {data.recipes[0]?.instructions.map((oneInstruction, index) => (
+        <li key={index}>{oneInstruction}</li>
       ))}
     </ul>
   )
 }
+
+// import { useContext, useEffect, useState } from 'react'
+// import useSWR from 'swr'
+// import styles from './Recipes.module.css'
+
+// export default function GetInstruction(title) {
+//   const fetcher = async (url) => {
+//     const response = await fetch(url)
+
+//     return response.json()
+//   }
+//   const [instruction, setInstruction] = useState(null)
+//   const { data, error, isLoading } = useSWR(https://dummyjson.com/recipes/search?q=${title}, fetcher)
+//   if (error) {
+//     return (<div>failed to load</div>)
+//   }
+//   if (isLoading) {
+//     return (<div>loading...</div>)
+//   }
+//   setInstruction(data.instructions)
+//   console.log(isLoading)
+
+//   return (
+//     <ul>
+//       {instruction.map((oneInstruction) => (
+//         <li key={oneInstruction}>{oneInstruction}</li>
+//       ))}
+//     </ul>
+//   )
+// }
