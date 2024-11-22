@@ -28,7 +28,7 @@ export default function UsersList() {
     <ul className={styles.mainUl}>
       {usersList.map((user) => (
         <div className={styles.div} key={user.id}>
-          <button className={styles.user} onClick={() => handleGetInstruction(user.id)}>
+          <button className={user.on ? styles.userOn : styles.userOf} onClick={() => handleGetInstruction(user.id)}>
             <p className={styles.userP}> {user.firstName}</p>
             <p className={styles.userP}> {user.lastName}</p>
             <p className={styles.userP}> {user.maidenName}</p>
