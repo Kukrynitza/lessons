@@ -37,31 +37,9 @@ export default function GetInstruction({ title }) {
   )
 }
 
-// import { useContext, useEffect, useState } from 'react'
-// import useSWR from 'swr'
-// import styles from './Recipes.module.css'
-
 // export default function GetInstruction({ title }) {
-//   const [instruction, setInstruction] = useState(null)
-//   const fetcher = async (get) => {
-//     const response = await fetch(get)
-
-//     return response.json()
-//   }
-//   const { data, error, isLoading } = useSWR(`https://dummyjson.com/recipes/search?q=${title}`, fetcher)
-//   if (error) {
-//     return (<div>failed to load</div>)
-//   }
-//   if (isLoading) {
-//     return (<div>loading...</div>)
-//   }
-//   setInstruction(data)
-
-//   return (
-//     <ul>
-//       {data.recipes[0]?.instructions.map((oneInstruction, index) => (
-//         <li key={index}>{oneInstruction}</li>
-//       ))}
-//     </ul>
-//   )
+//   const [user, setUser] = useState(null)
+//   const users = { ul: 54, nb: 78, go: { sg: 'vsdr' } }
+//   setUser(users)
+//   return null
 // }
