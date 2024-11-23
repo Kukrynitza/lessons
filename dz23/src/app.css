@@ -1,14 +1,13 @@
 body {
-  font-family: Geo, Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-family: "Cinzel Variable", Arial, Helvetica, sans-serif;
+  font-size: 18px;
   color: #1e223b;
   background-color: #d4cda9;
 }
 
 #app {
-  display: flex;
-  flex-flow: row nowrap;
+  display: grid;
+  grid-template-columns: auto auto;
   gap: 32px;
-  justify-content: center;
   padding: 2%;
 }

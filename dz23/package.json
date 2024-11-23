@@ -17,8 +17,11 @@
     "vite": "^5.4.11"
   },
   "dependencies": {
+    "@fontsource-variable/cinzel": "^5.1.0",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "classnames": "^2.5.1",
+    "delay": "^6.0.0",
     "react": "19.0.0-rc.1",
     "react-dom": "19.0.0-rc.1",
     "swr": "^2.2.5",
