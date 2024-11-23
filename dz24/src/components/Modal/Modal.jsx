@@ -1,13 +1,9 @@
 import { useState } from 'react'
 import styles from './Modal.module.css'
 
-export default function Modal() {
-  const [off, setOff] = useState(false)
+export default function Modal({ on, setOn }) {
   function check() {
-    setOff((on) => !on)
-  }
-  if (off) {
-    return null
+    setOn((off) => !off)
   }
 
   return (

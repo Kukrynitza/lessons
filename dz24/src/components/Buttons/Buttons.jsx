@@ -19,8 +19,8 @@ export default function Buttons() {
         <button className={styles.withoutPortal} onClick={withoutPortal}>Без портала </button>
         <button className={styles.portal} onClick={portal}>Через портал</button>
       </div>
-      {on && <Modal/>}
-      {onPortal && createPortal(<Modal/>, document.body)}
+      {on && <Modal on={on} setOn={setOn}/>}
+      {onPortal && createPortal(<Modal on={onPortal} setOn={setOnPortal}/>, document.body)}
     </>
   )
 }
