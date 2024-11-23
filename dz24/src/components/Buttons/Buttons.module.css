@@ -1,0 +1,17 @@
+.div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.without-portal {
+  text-align: center;
+  background-color: #13e127;
+  border: 5px solid #4e9173;
+}
+
+.portal {
+  text-align: center;
+  background-color: #be1c1c;
+  border: 5px solid #4e9173;
+}

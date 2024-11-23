@@ -1,11 +1,7 @@
-import Checkbox from './components/Checkbox/Checkbox.jsx'
-import UsersList from './components/UsersList/UsersList.jsx'
+import Buttons from './components/Buttons/Buttons.jsx'
 
 export default function App() {
   return (
-    <>
-      <UsersList />
-      <Checkbox />
-    </>
+    <Buttons/>
   )
 }
