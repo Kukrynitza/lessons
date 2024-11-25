@@ -1,11 +1,8 @@
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './app.css'
 import './reset.css'
+import './app.css'
+import App from './App.jsx'
 
 const root = createRoot(document.querySelector('#app'))
-root.render(
-  <>
-    <App />
-  </>
-)
+
+root.render(<App />)
