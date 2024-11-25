@@ -1,10 +1,14 @@
-span {
-  color: #ffe629;
+.product {
+  display: grid;
+  grid-template-columns: 40px auto 100px;
+  border-bottom: 1px solid #d4ff70;
 }
 
-.li {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  justify-content: space-between;
-  border-bottom: 1px solid #d4ff70;
+.price {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.price span {
+  color: #ffe629;
 }
