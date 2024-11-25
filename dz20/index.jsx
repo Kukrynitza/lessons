@@ -1,7 +1,8 @@
 import { createRoot } from 'react-dom/client'
-import 'the-new-css-reset/css/reset.css'
-import App from './src/App.jsx'
+import 'the-new-css-reset'
 import './src/app.css'
+import App from './src/App.jsx'
 
-const root = createRoot(document.querySelector('#app'))
+const root = createRoot(document.getElementById('app'))
+
 root.render(<App />)
