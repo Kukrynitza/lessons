@@ -5,7 +5,7 @@ import ProductList from './components/ProductList/ProductList.jsx'
 export default function App() {
   return (
     <>
-      <Greeting />
+      <Greeting name="Олег" />
       <UserStatus />
       <ProductList />
     </>
