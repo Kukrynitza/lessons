@@ -1,19 +1,22 @@
+import courses from '../../data/courses.js'
 import styles from './Main.module.css'
-import courses from './courses.js'
+
 export default function Main() {
   return (
-    <main>
+    <main className={styles.page}>
       <h1>Курсы компании «Гарцующий пони»</h1>
       <ul className={styles.courses}>
-        {courses.map((element) => (
-          <li key={element.title}>
-            <article>
-              <h2>{element.title}</h2>
-              <p className={styles.author}>{element.author}</p>
-              <img src={element.image.src} alt={element.image.alt} />
-              <p>{element.info}</p>
-              <p className={styles.date}>{element.date}</p>
-            </article>
+        {courses.map((course) => (
+          <li key={course.title}>
+            <a href={`/${course.slug}`}>
+              <article className={styles.course}>
+                <h2>{course.title}</h2>
+                <p className={styles.author}>{course.author}</p>
+                <img src={course.image.src} alt={course.image.alt} />
+                <p>{course.info}</p>
+                <p className={styles.date}>{course.date}</p>
+              </article>
+            </a>
           </li>
         ))}
       </ul>

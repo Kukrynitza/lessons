@@ -1,11 +1,10 @@
-main {
+.page {
   margin-bottom: 30px;
 }
 
-main ul li {
-  display: flex;
-  flex-flow: column nowrap;
-  width: calc(100% / 3);
+.page h1 {
+  margin-bottom: 7px;
+  font-size: 24px;
 }
 
 .courses {
@@ -14,9 +13,13 @@ main ul li {
   column-gap: 15px;
 }
 
-article {
+.courses li {
+  flex-basis: calc((100% - 30px) / 3);
+}
+
+.course {
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   row-gap: 15px;
   min-height: 440px;
   padding: 10px;
@@ -24,12 +27,7 @@ article {
   border-radius: 5px;
 }
 
-h1 {
-  margin-bottom: 7px;
-  font-size: 24px;
-}
-
-h2 {
+.course h2 {
   font-size: 22px;
 }
 
