@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /***
     The new CSS reset - version 1.11.3 (last updated 25.08.2024)
     GitHub page: https://github.com/elad2412/the-new-css-reset
@@ -8,7 +9,7 @@
     - The "symbol *" part is to solve Firefox SVG sprite bug
     - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
  */
-*:where(:not(html, iframe, canvas, img, svg, video, audio, svg *, symbol *)) {
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
   all: unset;
   display: revert;
 }
@@ -22,20 +23,18 @@
 
 /* Fix mobile Safari increase font-size on landscape mode */
 html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
 
 /* Reapply the pointer cursor for anchor tags */
-a,
- button {
+a, button {
   cursor: revert;
 }
 
 /* Remove list styles (bullets/numbers) */
-ol,
- ul,
- menu,
- summary {
+ol, ul, menu, summary {
   list-style: none;
 }
 
@@ -56,9 +55,8 @@ table {
 }
 
 /* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
-input,
- textarea {
-  user-select: auto;
+input, textarea {
+  -webkit-user-select: auto;
 }
 
 /* revert the 'white-space' property for textarea elements on Safari */
@@ -68,6 +66,7 @@ textarea {
 
 /* minimum style to allow to style meter element */
 meter {
+  -webkit-appearance: revert;
   appearance: revert;
 }
 
@@ -83,20 +82,20 @@ meter {
 }
 
 /* fix the feature of 'hidden' attribute.
- display:revert; revert to element instead of attribute */
+   display:revert; revert to element instead of attribute */
 :where([hidden]) {
   display: none;
 }
 
 /* revert for bug in Chromium browsers
- - fix for the content editable attribute will work properly.
- - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element */
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
 :where([contenteditable]:not([contenteditable="false"])) {
   -moz-user-modify: read-write;
   -webkit-user-modify: read-write;
   overflow-wrap: break-word;
   -webkit-line-break: after-white-space;
-  user-select: auto;
+  -webkit-user-select: auto;
 }
 
 /* apply back the draggable feature - exist only in Chromium and Safari */
