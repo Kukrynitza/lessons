@@ -1,8 +1,7 @@
 import styles from './UserStatus.module.css'
-const isOnline = false
 
-export default function UserStatus() {
+export default function UserStatus({ isOnline = false }) {
   return isOnline
-    ? <p className={styles.on}>Пользователь в сети</p>
-    : <p className={styles.off}>Пользователь не в сети</p>
+    ? <p className={styles.online}>Пользователь в сети</p>
+    : <p className={styles.offline}>Пользователь не в сети</p>
 }
