@@ -1,3 +1,4 @@
+/* eslint-disable perfectionist/sort-objects */
 export default [
   { id: 1, title: 'Laptop', price: 1000, image: 'laptop.jpg', discount: 10 },
   { id: 2, title: 'Smartphone', price: 500, image: 'smartphone.jpg', discount: 0 },
