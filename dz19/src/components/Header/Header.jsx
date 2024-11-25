@@ -3,11 +3,11 @@ import styles from './Header.module.css'
 export default function Header() {
   return (
     <header>
-      <nav className={styles.nav}>
-        <ul className={styles.ul}>
-          <li><a href="/home">Главная</a></li>
+      <nav className={styles.navigation}>
+        <ul>
+          <li><a href="/">Главная</a></li>
           <li><a href="/blog">Блог</a></li>
-          <li><a href="/contact">Контакты</a></li>
+          <li><a href="/contacts">Контакты</a></li>
         </ul>
       </nav>
     </header>
