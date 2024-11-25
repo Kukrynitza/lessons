@@ -1,5 +1,3 @@
 import config from '@shcherbin/eslint-config'
 
-export default [
-  ...config.react
-]
+export default config.react
