@@ -1,0 +1,13 @@
+body {
+  font-family: "Cinzel Variable", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #1e223b;
+  background-color: #d4cda9;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 32px;
+  padding: 2%;
+}
