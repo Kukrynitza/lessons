@@ -1,0 +1,14 @@
+.product {
+  display: grid;
+  grid-template-columns: 40px auto 100px;
+  border-bottom: 1px solid #d4ff70;
+}
+
+.price {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.price span {
+  color: #ffe629;
+}
