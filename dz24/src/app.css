@@ -1,0 +1,14 @@
+body {
+  font-family: "Hachi Maru Pop", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: #c2f0c2;
+  background-color: #0a1128;
+}
+
+#app {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 32px;
+  justify-content: center;
+  padding: 2%;
+}
