@@ -1,0 +1,22 @@
+{
+  "name": "dz19",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "19.0.0-rc-603e6108-20241029",
+    "react-dom": "19.0.0-rc-603e6108-20241029"
+  },
+  "devDependencies": {
+    "@shcherbin/eslint-config": "^0.12.1",
+    "@shcherbin/stylelint-config": "^0.2.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "eslint": "^9.15.0",
+    "stylelint": "^16.10.0",
+    "vite": "^5.4.11"
+  },
+  "type": "module",
+  "private": "true"
+}
