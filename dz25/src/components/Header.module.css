@@ -1,0 +1,18 @@
+.header {
+  padding: 24px;
+
+  nav {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #2a2a28;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: 32px;
+  }
+}
+
+.is-active {
+  color: #ffe629;
+}
