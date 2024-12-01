@@ -1,0 +1,35 @@
+.ul {
+  display: grid;
+  grid-template-columns: auto auto;
+  row-gap: 40px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.li {
+  color: #fdf7fd;
+
+  &:nth-child(2n) {
+    border-bottom: 5px solid #004074;
+  }
+
+  &:nth-child(2n+1) {
+    border-bottom: 5px solid #6e2920;
+  }
+
+  &:last-child {
+    color: #c2f0c2;
+  }
+}
+
+.button {
+  position: relative;
+  right: 50px;
+  display: block;
+  padding: 5px;
+  margin-left: auto;
+  background-color: #1b5745;
+  border-radius: 10px;
+}
