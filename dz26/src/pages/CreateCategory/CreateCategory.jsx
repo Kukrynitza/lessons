@@ -24,7 +24,7 @@ export default function CreateCategory() {
 
   return (
     <>
-      <title>CreateCategory</title>
+      <title>CreateCategoryPage</title>
       <h1 className={styles.h1}>Create new name</h1>
       <form action={formAction} className={styles.form}>
         <input

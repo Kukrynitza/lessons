@@ -17,7 +17,7 @@ export default function CategoryList() {
 
   return (
     <>
-      <title>CategoryList</title>
+      <title>CategoriesPage</title>
       <button type="button" className={styles.button} onClick={() => mutate()}>Reboot</button>
       <ul className={styles.ul}>
         {data.map((element) => (

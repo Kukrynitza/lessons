@@ -55,7 +55,7 @@ export default function CreateCategory() {
 
   return (
     <>
-      <title>UpdateCategoryByID</title>
+      <title>UpdateCategoryPage</title>
       <h1 className={styles.h1}>Update category by ID</h1>
       <form action={formAction} className={styles.form}>
         <input
