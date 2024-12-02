@@ -1,8 +1,13 @@
 .button {
   padding: 5px;
   margin-left: auto;
+  cursor: pointer;
   background-color: #1b5745;
   border-radius: 10px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .input {
