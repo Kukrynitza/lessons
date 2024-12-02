@@ -29,9 +29,10 @@ export default function Header() {
   return (
     <header className={styles.header} style={{ '--gradient': gradient }}>
       <ul className={styles.catalog}>
-        <li><NavLink to="/CategoryList" className={({ isActive }) => (isActive ? styles.aActive : styles.a)} style={{ '--textcolor': pages[currentIndex].textColor }}>CategoryList</NavLink></li>
-        <li><NavLink to="/" className={({ isActive }) => (isActive ? styles.aActive : styles.a)} style={{ '--textcolor': pages[currentIndex].textColor }}>Main</NavLink></li>
-        <li><NavLink to="/CreateCategory" className={({ isActive }) => (isActive ? styles.aActive : styles.a)} style={{ '--textcolor': pages[currentIndex].textColor }}>CreateCategory</NavLink></li>
+        <li><NavLink to="/categories" className={({ isActive }) => (isActive ? styles.aActive : styles.a)} style={{ '--textcolor': pages[currentIndex].textColor }} end>CategoryList</NavLink></li>
+        <li><NavLink to="/" className={({ isActive }) => (isActive ? styles.aActive : styles.a)} style={{ '--textcolor': pages[currentIndex].textColor }} end>Main</NavLink></li>
+        <li><NavLink to="/categories/create" className={({ isActive }) => (isActive ? styles.aActive : styles.a)} style={{ '--textcolor': pages[currentIndex].textColor }} end>CreateCategory</NavLink></li>
+        <li><NavLink to="/categories/:slug/edit" className={({ isActive }) => (isActive ? styles.aActive : styles.a)} style={{ '--textcolor': pages[currentIndex].textColor }} end>UpdateCategoryByID</NavLink></li>
       </ul>
     </header>
   )

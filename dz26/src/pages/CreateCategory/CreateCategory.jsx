@@ -1,13 +1,13 @@
 import { useActionState, useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import styles from './CreateCategory.module.css'
 
 export default function CreateCategory() {
   const [typing, setTyping] = useState('')
+  const navigate = useNavigate()
   const [message, formAction, isPending] = useActionState(async (_, formData) => {
     const name = formData.get('name')
     const slug = name.toLowerCase()
-    console.log(name, slug)
     await fetch(
       'https://happy-store.vercel.app/api/categories',
       {
@@ -19,6 +19,7 @@ export default function CreateCategory() {
         method: 'POST'
       }
     )
+    navigate('/categories')
   })
 
   return (
@@ -41,7 +42,7 @@ export default function CreateCategory() {
           type="submit"
           className={styles.button}
           style={typing ? { backgroundColor: '#46A758' } : { backgroundColor: '#E54D2E' }}
-          disabled={isPending}
+          disabled={isPending || !typing}
         >
           Create
         </button>
