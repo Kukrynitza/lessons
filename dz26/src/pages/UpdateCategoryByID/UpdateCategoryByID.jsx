@@ -18,25 +18,25 @@ export default function CreateCategory() {
     const newName = formData.get('newName')
     const category = data.find((element) => element.slug === oldSlug)
     const slug = newName.toLowerCase()
-    // console.log(category.id, slug)
-    const response = await fetch(
-      'https://happy-store.vercel.app/api/categories/19',
-      {
-        body: JSON.stringify({
-          name: newName,
-          slug
-        }),
-        headers: { 'Content-Type': 'application/json' },
-        method: 'PATCH'
-      }
-    )
-    setTypingSlug(' ')
     try {
+      const response = await fetch(
+        `https://happy-store.vercel.app/api/categories/${category.id}`,
+        {
+          body: JSON.stringify({
+            name: newName,
+            slug
+          }),
+          headers: { 'Content-Type': 'application/json' },
+          method: 'PATCH'
+        }
+      )
       if (!response) {
         throw new Error('Failed to update category')
       }
       navigate('/categories')
     } catch (err) {
+      setTypingSlug('')
+      setTypingName('')
       console.log(err)
       // eslint-disable-next-line no-alert
       alert('Ошибка при обновлении категории')

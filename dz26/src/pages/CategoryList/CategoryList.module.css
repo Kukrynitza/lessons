@@ -1,6 +1,6 @@
 .ul {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(3, auto);
   row-gap: 40px;
   justify-content: space-between;
   width: 100%;
@@ -11,12 +11,16 @@
 .li {
   color: #fdf7fd;
 
-  &:nth-child(2n) {
-    border-bottom: 5px solid #004074;
+  &:nth-child(3n + 1) {
+    border-bottom: 5px solid #1b5745;
   }
 
-  &:nth-child(2n+1) {
+  &:nth-child(3n+2) {
     border-bottom: 5px solid #6e2920;
+  }
+
+  &:nth-child(3n + 3) {
+    border-bottom: 5px solid #004074;
   }
 
   &:last-child {
