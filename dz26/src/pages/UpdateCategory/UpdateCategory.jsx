@@ -1,9 +1,9 @@
 import { useActionState, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import useSWR from 'swr'
-import styles from './UpdateCategoryByID.module.css'
+import styles from './UpdateCategory.module.css'
 
-export default function CreateCategory() {
+export default function UpdateCategory() {
   const fetcher = async (url) => {
     const response = await fetch(url)
 

@@ -1,3 +1,7 @@
+:root {
+  --gradient: linear-gradient(45deg, red 0 33, green 33 66, blue 66 100);
+}
+
 header {
   display: grid;
   grid-template-columns: auto;
@@ -5,7 +9,8 @@ header {
   padding-top: 20px;
   padding-bottom: 20px;
   margin-bottom: 50px;
-  background: var(--gradient);
+  background-image: var(--gradient);
+  transition: background-image 2s;
 }
 
 .catalog {

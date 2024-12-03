@@ -9,7 +9,7 @@ export default function CreateCategory() {
     const name = formData.get('name')
     const slug = name.toLowerCase()
     await fetch(
-      'https://happy-store.vercel.app/api/categories',
+      'https://happy-store.spacehub.workers.dev/api/categories',
       {
         body: JSON.stringify({
           name,

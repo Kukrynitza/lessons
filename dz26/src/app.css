@@ -4,7 +4,7 @@ body {
   font-size: 18px;
   line-height: 1.6;
   color: #eeeeec;
-  background-color: #111110;
+  background-color: #121113;
 }
 
 h1 {
@@ -17,8 +17,4 @@ h1 {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100svh;
-}
-
-main {
-  padding: 24px;
 }
