@@ -7,7 +7,7 @@ export default function CreateCategory() {
   const navigate = useNavigate()
   const [message, formAction, isPending] = useActionState(async (_, formData) => {
     const name = formData.get('name')
-    const slug = name.toLowerCase()
+    const slug = name.toLowerCase().replace(' ', '-')
     await fetch(
       'https://happy-store.spacehub.workers.dev/api/categories',
       {

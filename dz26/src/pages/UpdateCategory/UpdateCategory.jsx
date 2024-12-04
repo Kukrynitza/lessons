@@ -17,7 +17,7 @@ export default function UpdateCategory() {
     const oldSlug = formData.get('oldSlug')
     const newName = formData.get('newName')
     const category = data.find((element) => element.slug === oldSlug)
-    const slug = newName.toLowerCase()
+    const slug = newName.toLowerCase().replace(' ', '-')
     try {
       const response = await fetch(
         `https://happy-store.vercel.app/api/categories/${category.id}`,
