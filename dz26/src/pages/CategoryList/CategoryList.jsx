@@ -2,12 +2,12 @@ import { Link } from 'react-router'
 import useSWR from 'swr'
 import styles from './CategoryList.module.css'
 
-export default function CategoryList() {
-  const fetcher = async (url) => {
-    const response = await fetch(url)
+const fetcher = async (url) => {
+  const response = await fetch(url)
 
-    return response.json()
-  }
+  return response.json()
+}
+export default function CategoryList() {
   const { data, error, isLoading, mutate } = useSWR('https://happy-store.spacehub.workers.dev/api/categories', fetcher)
   if (isLoading) {
     return (<p>Loading...</p>)
@@ -18,7 +18,7 @@ export default function CategoryList() {
 
   return (
     <>
-      <title>CategoriesPage</title>
+      <title>Categories Page</title>
       <button type="button" className={styles.button} onClick={() => mutate()}>Reboot</button>
       <ul className={styles.ul}>
         {data.map((element) => (

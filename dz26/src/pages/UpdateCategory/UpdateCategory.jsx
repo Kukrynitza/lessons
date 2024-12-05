@@ -3,16 +3,16 @@ import { Link, useNavigate } from 'react-router'
 import useSWR from 'swr'
 import styles from './UpdateCategory.module.css'
 
-export default function UpdateCategory() {
-  const fetcher = async (url) => {
-    const response = await fetch(url)
+const fetcher = async (url) => {
+  const response = await fetch(url)
 
-    return response.json()
-  }
+  return response.json()
+}
+export default function UpdateCategory() {
   const navigate = useNavigate()
   const [typingSlug, setTypingSlug] = useState('')
   const [typingName, setTypingName] = useState('')
-  const { data, error, isLoading } = useSWR('https://happy-store.vercel.app/api/categories', fetcher)
+  const { data, error, isLoading } = useSWR('https://happy-store.spacehub.workers.dev/api/categories', fetcher)
   const [message, formAction, isPending] = useActionState(async (_, formData) => {
     const oldSlug = formData.get('oldSlug')
     const newName = formData.get('newName')
@@ -20,7 +20,7 @@ export default function UpdateCategory() {
     const slug = newName.toLowerCase().replace(' ', '-')
     try {
       const response = await fetch(
-        `https://happy-store.vercel.app/api/categories/${category.id}`,
+        `https://happy-store.spacehub.workers.dev/api/categories/${category.id}`,
         {
           body: JSON.stringify({
             name: newName,
@@ -55,7 +55,7 @@ export default function UpdateCategory() {
 
   return (
     <>
-      <title>UpdateCategoryPage</title>
+      <title>Update CategoryPage</title>
       <h1 className={styles.h1}>Update category by ID</h1>
       <form action={formAction} className={styles.form}>
         <input
@@ -74,7 +74,7 @@ export default function UpdateCategory() {
           name="newName"
           className={styles.input}
           style={{
-            border: `5px solid ${typingName ? '#46A758' : '#E54D2E'}`
+            '--input-color': typingName ? '#46A758' : '#E54D2E'
           }}
           value={typingName}
           placeholder="Enter new name"

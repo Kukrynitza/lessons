@@ -12,6 +12,7 @@
 .input {
   width: 100%;
   background-color: #212225;
+  border: 5px solid var(--input-color);
   border-radius: 10px;
 }
 
@@ -28,4 +29,9 @@
 .h1 {
   font-size: 32px;
   text-align: center;
+}
+
+.error {
+  font-size: 20px;
+  color: #6e2920;
 }

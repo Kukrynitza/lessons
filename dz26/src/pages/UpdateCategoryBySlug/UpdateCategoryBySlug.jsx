@@ -4,16 +4,16 @@ import useSWR from 'swr'
 import z from 'zod'
 import styles from './UpdateCategoryBySlug.module.css'
 
+const fetcher = async (url) => {
+  const response = await fetch(url)
+
+  return response.json()
+}
 export default function UpdateCategoryBySlug() {
   const stringSchema = z.string()
     .min(3, { message: 'The line must contain at least 3 characters' })
     .max(20, { message: 'The line must contain a maximum 20 characters' })
     .refine((value) => !value.includes('-'), { message: 'The line must not contain the " - " symbol, there must be a space(" ") in its place' })
-  const fetcher = async (url) => {
-    const response = await fetch(url)
-
-    return response.json()
-  }
   const { slug } = useParams()
   const navigate = useNavigate()
   const [typingName, setTypingName] = useState('')
@@ -73,7 +73,7 @@ export default function UpdateCategoryBySlug() {
 
   return (
     <>
-      <title>UpdateCategoryPage</title>
+      <title>Update Category Page</title>
       <h1 className={styles.h1}>Update category {data.name}</h1>
       <form action={formAction} className={styles.form}>
         {isError && <label htmlFor="newName" className={styles.error}>{isError}</label>}
@@ -83,7 +83,7 @@ export default function UpdateCategoryBySlug() {
           id="newName"
           className={styles.input}
           style={{
-            border: `5px solid ${(typingName && validate) || touched ? '#46A758' : '#E54D2E'}`
+            '--input-color': (typingName && validate) || touched ? '#46A758' : '#E54D2E'
           }}
           value={typingName}
           placeholder="Enter new name"
