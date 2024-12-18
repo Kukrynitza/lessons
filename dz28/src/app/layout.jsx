@@ -1,7 +1,7 @@
 import 'the-new-css-reset'
 import '@fontsource-variable/figtree'
 import './_styles/app.css'
-import Header from './_categories/Header/page.jsx'
+import Header from '../_categories/Header/page.jsx'
 
 export default function RootLayout({ children }) {
   return (

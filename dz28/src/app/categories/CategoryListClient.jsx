@@ -1,14 +1,10 @@
 'use client'
 import Link from 'next/link'
 import useSWR from 'swr'
+import fetcher from '../../_sourses/fetcher.js'
 import styles from './CategoryList.module.css'
 
-const fetcher = async (url) => {
-  const response = await fetch(url)
-
-  return response.json()
-}
-export default function CategoryList() {
+export default function CategoryListClient() {
   const { data, error, isLoading, mutate } = useSWR('https://happy-store.spacehub.workers.dev/api/categories', fetcher)
   if (isLoading) {
     return (<p>Loading...</p>)
@@ -19,7 +15,6 @@ export default function CategoryList() {
 
   return (
     <>
-      <title>Categories Page</title>
       <button type="button" className={styles.button} onClick={() => mutate()}>Reboot</button>
       <ul className={styles.ul}>
         {data.map((element) => (

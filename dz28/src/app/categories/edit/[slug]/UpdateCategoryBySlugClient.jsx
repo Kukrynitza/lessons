@@ -3,34 +3,24 @@ import { useActionState, useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { match } from 'path-to-regexp'
 import useSWR from 'swr'
-import z from 'zod'
+import { parse } from 'valibot'
+import fetcher from '../../../../_sourses/fetcher.js'
+import stringShema from '../../../../_sourses/stringShema.js'
 import styles from './UpdateCategoryBySlug.module.css'
 
-const fetcher = async (url) => {
-  const response = await fetch(url)
-
-  return response.json()
-}
 export default function UpdateCategoryBySlug() {
-  const stringSchema = z.string()
-    .min(3, { message: 'The line must contain at least 3 characters' })
-    .max(20, { message: 'The line must contain a maximum 20 characters' })
-    .refine((value) => !value.includes('-'), { message: 'The line must not contain the " - " symbol, there must be a space(" ") in its place' })
   const router = useRouter()
   const path = usePathname()
   const matcher = match('/categories/edit/:slug')
   const predSlug = matcher(path)
   const { slug } = predSlug.params
-  const [typingName, setTypingName] = useState('')
-  const [validate, setValidate] = useState(true)
   const [touched, setTouched] = useState(false)
   const [isError, setIsError] = useState('')
   const { data, error, isLoading } = useSWR(`https://happy-store.spacehub.workers.dev/api/categories/slug/${slug}`, fetcher)
   const [message, formAction, isPending] = useActionState(async (_, formData) => {
     const newName = formData.get('newName')
     try {
-      stringSchema.parse(newName)
-      setValidate(true)
+      parse(stringShema, newName)
       const newSlug = newName.toLowerCase().replace(' ', '-')
       const response = await fetch(
         `https://happy-store.spacehub.workers.dev/api/categories/${data.id}`,
@@ -48,23 +38,13 @@ export default function UpdateCategoryBySlug() {
       }
       router.push('/categories')
     } catch (err) {
-      if (err instanceof z.ZodError) {
-        console.log(err.errors)
-        setValidate(false)
-        setTouched(false)
-        setIsError(err.errors[0].message)
-      } else {
-        setTypingName('') // eslint-disable-next-line no-alert
-        alert('Ошибка при обновлении категории')
-      }
+      setTouched(false)
+      console.error(err)
+      setIsError(err.message)
     }
-  })
-  useEffect(() => {
-    if (data) {
-      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
-      setTypingName(data?.name)
-    }
-  }, [data])
+
+    return formData.get('newName')
+  }, data?.name)
   if (isLoading) {
     return (
       <title>Loading...</title>
@@ -78,7 +58,6 @@ export default function UpdateCategoryBySlug() {
 
   return (
     <>
-      <title>Update Category Page</title>
       <h1 className={styles.h1}>Update category {data.name}</h1>
       <form action={formAction} className={styles.form}>
         {isError && <label htmlFor="newName" className={styles.error}>{isError}</label>}
@@ -88,12 +67,11 @@ export default function UpdateCategoryBySlug() {
           id="newName"
           className={styles.input}
           style={{
-            '--input-color': (typingName && validate) || touched ? '#46A758' : '#E54D2E'
+            '--input-color': touched ? '#46A758' : '#E54D2E'
           }}
-          value={typingName}
+          defaultValue={data.name}
           placeholder="Enter new name"
           onChange={(element) => {
-            setTypingName(element.target.value)
             setTouched(true)
             setIsError('')
           }}
@@ -101,8 +79,8 @@ export default function UpdateCategoryBySlug() {
         <button
           type="submit"
           className={styles.button}
-          style={(typingName && validate) || touched ? { backgroundColor: '#46A758' } : { backgroundColor: '#E54D2E' }}
-          disabled={isPending || !typingName}
+          style={touched ? { backgroundColor: '#46A758' } : { backgroundColor: '#E54D2E' }}
+          disabled={isPending || !touched}
         >
           Update
         </button>

@@ -51,6 +51,9 @@ importers:
       stylelint:
         specifier: ^16.11.0
         version: 16.11.0(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
 
 packages:
 

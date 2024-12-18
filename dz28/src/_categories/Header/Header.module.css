@@ -29,7 +29,8 @@
   }
 }
 
-.a-active {
+/* stylelint-disable-next-line selector-class-pattern */
+.aActive {
   display: inline-block;
   color: var(--textcolor);
   text-decoration: underline solid 2px var(--textcolor);

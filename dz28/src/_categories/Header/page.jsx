@@ -1,13 +1,11 @@
 'use client'
-
 import Link from 'next/link.js'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { match } from 'path-to-regexp'
 import pages from '../../_sourses/headerStyles.js'
 import styles from './Header.module.css'
 
 export default function Header() {
-  const router = useRouter()
   const currentPath = usePathname()
   const currentIndex = pages.findIndex((page) => {
     const matcher = match(page.path)

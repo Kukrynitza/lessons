@@ -24,6 +24,7 @@
     "@shcherbin/stylelint-config": "^0.2.0",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.16.0",
-    "stylelint": "^16.11.0"
+    "stylelint": "^16.11.0",
+    "typescript": "^5.7.2"
   }
 }
