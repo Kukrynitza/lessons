@@ -22,6 +22,8 @@
   "devDependencies": {
     "@shcherbin/eslint-config": "^0.14.1",
     "@shcherbin/stylelint-config": "^0.2.0",
+    "@types/node": "22.10.2",
+    "@types/react": "19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.16.0",
     "stylelint": "^16.11.0",

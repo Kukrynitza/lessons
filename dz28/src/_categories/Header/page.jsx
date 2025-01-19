@@ -31,6 +31,7 @@ export default function Header() {
   }
   const gradientCreate = currentPath === '/' ? haveEqually() : haventEqually()
   const gradient = `linear-gradient(45deg, ${gradientCreate.join(', ')})`
+  console.log(styles)
 
   return (
     <header className={styles.header} style={{ '--gradient': gradient }}>
