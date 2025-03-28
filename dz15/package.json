@@ -1,0 +1,8 @@
+{
+  "name": "dz15",
+  "private": "true",
+  "devDependencies": {
+    "@shcherbin/eslint-config-node": "^0.3.0",
+    "eslint": "8"
+  }
+}
