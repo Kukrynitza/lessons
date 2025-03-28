@@ -1,0 +1,28 @@
+ul {
+  display: grid;
+  gap: 30px;
+}
+
+li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 30px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.button-change {
+  text-align: center;
+  background-color: #12a594;
+  border-radius: 5%;
+}
+
+.button-delete {
+  text-align: center;
+  background-color: #e54d2e;
+  border-radius: 5%;
+}
